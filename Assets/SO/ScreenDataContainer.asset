@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7a0bcdf5ec2b4d4fb28e97639db7911, type: 3}
+  m_Name: ScreenDataContainer
+  m_EditorClassIdentifier: Assembly-CSharp::ScreenDataContainer
+  Screens:
+  - {fileID: 11400000, guid: 9863aabd49c3fab47a4194f777aff6d6, type: 2}
+  - {fileID: 11400000, guid: 52985ead664e40a4ea7366765d32e053, type: 2}
+  - {fileID: 11400000, guid: 07dab9e9fa2c5d048ae4935dbd218808, type: 2}
+  - {fileID: 11400000, guid: 68149651f1e466945a3b0e95674aa07d, type: 2}

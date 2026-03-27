@@ -4,6 +4,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "UINavigationRules", menuName = "UI/NavigationRules")]
 public class UINavigationRules : ScriptableObject
 {
+    [Header("navigation rules")]
     public UINavigationRule[] Rules;
 
     public bool TryGetNavigationRule(string contextID, out UINavigationRule foundRule)
@@ -29,11 +30,13 @@ public struct UINavigationRule
     public ScreenType Target;
     public ConditionDefinition[] Conditions;
 
-    [Header("Safety Pruning")]
+    [Header("pruning logic")]
     [Tooltip("keep popping screens until this type is at the top. Leave 'None' to use PruneDepth instead.")]
     public ScreenType PruneUntil;
 
+    [Tooltip("how deep want to prune tabs")]
     public int PruneDepth;
 
+    [Tooltip("clear whole screens stack")]
     public bool ClearStack;
 }

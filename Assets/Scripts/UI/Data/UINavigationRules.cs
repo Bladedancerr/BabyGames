@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "UINavigationRules", menuName = "UI/NavigationRules")]
@@ -28,10 +29,11 @@ public struct UINavigationRule
     public ScreenType Target;
     public ConditionDefinition[] Conditions;
 
-    [Header("Stack Management")]
-    [Tooltip("Should the screen we are coming FROM be removed from the history?")]
-    public bool PrunePreviousFromStack;
+    [Header("Safety Pruning")]
+    [Tooltip("keep popping screens until this type is at the top. Leave 'None' to use PruneDepth instead.")]
+    public ScreenType PruneUntil;
 
-    [Tooltip("Should the screen we are coming FROM be visually disabled?")]
-    public bool HidePrevious;
+    public int PruneDepth;
+
+    public bool ClearStack;
 }

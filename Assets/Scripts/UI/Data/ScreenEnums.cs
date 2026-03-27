@@ -1,5 +1,6 @@
 public enum ScreenType
 {
+    NONE,
     MAINMENUSCREEN,
     PARENTPORTALPOPUP,
     PARENTPORTALSCREEN,

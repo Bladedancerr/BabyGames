@@ -35,13 +35,13 @@ public class ScreensManager : MonoBehaviour, IUINavigator
     {
         if (_screenDataContainer == null)
         {
-            Debug.LogError($"screendatacontainer isn't assigned to {this.gameObject.name}");
+            Debug.LogError($"screensmanager screendatacontainer isn't assigned to {this.gameObject.name}");
             return;
         }
 
         if (_screensParent == null || _popupsParent == null)
         {
-            Debug.LogError($"screensparent or popupsparent isn't assigned to {this.gameObject.name}");
+            Debug.LogError($"screensmanager screensparent or popupsparent isn't assigned to {this.gameObject.name}");
             return;
         }
 
@@ -72,37 +72,46 @@ public class ScreensManager : MonoBehaviour, IUINavigator
     }
 
 
-    public void RequestScreenOpen(ScreenType screenType)
+    public void RequestScreenOpen(ScreenType target, int depth, ScreenType until, bool clear)
     {
-        Debug.Log($"screensmanager screen open requested {screenType}");
+        Debug.Log($"screensmanager screen open requested {target}");
 
-        if (!_screenDataContainer.TryGetScreenData(screenType, out ScreenData nextData))
+        if (clear)
         {
-            Debug.LogWarning($"couldn't find screen data for screen {screenType}");
-            return;
+            Debug.Log("screensmanager clear requested");
+            ClearStack();
         }
 
-        if (nextData.UILayer == UILayer.Screen)
+        if (!_screenDataContainer.TryGetScreenData(target, out ScreenData nextData))
         {
-            while (_screenStack.Count > 0)
+            Debug.LogWarning($"screensmanager couldn't find screen data for screen {target}");
+            return;
+        }
+        else if (until != ScreenType.NONE)
+        {
+            Debug.Log("screensmanager until is set");
+            while (_screenStack.Count > 0 && _screenStack.Peek().ScreenType != until)
             {
-                var top = _screenStack.Peek();
-                if (!_screenDataContainer.TryGetScreenData(top.ScreenType, out ScreenData topData))
+                var top = _screenStack.Pop();
+                top.Close();
+                _screenProvider.ReleaseScreen(top);
+                PrintStackForDebug();
+            }
+        }
+        else
+        {
+            Debug.Log("screensmanager until is not set using depth");
+            for (int i = 0; i < depth; i++)
+            {
+                if (_screenStack.Count == 0)
                 {
                     break;
                 }
 
-                if (topData.CloseOnNextScreen)
-                {
-                    _screenStack.Pop();
-                    top.Close();
-                    _screenProvider.ReleaseScreen(top);
-                }
-                else
-                {
-                    top.Close();
-                    break;
-                }
+                var top = _screenStack.Pop();
+                top.Close();
+                _screenProvider.ReleaseScreen(top);
+                PrintStackForDebug();
             }
         }
 
@@ -136,6 +145,15 @@ public class ScreensManager : MonoBehaviour, IUINavigator
         }
 
         PrintStackForDebug();
+    }
+
+    private void ClearStack()
+    {
+        while (_screenStack.Count > 0)
+        {
+            _screenProvider.ReleaseScreen(_screenStack.Pop());
+            PrintStackForDebug();
+        }
     }
 
     private Transform GetScreenParent(UILayer uILayer)

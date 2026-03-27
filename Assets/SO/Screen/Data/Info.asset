@@ -12,10 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3f9b55e8f757dd4bb79aecc766e3abe, type: 3}
   m_Name: Info
   m_EditorClassIdentifier: Assembly-CSharp::ScreenData
-  ScreenType: 6
+  ScreenType: 7
   ScreenPrefab: {fileID: 5466128372520095144, guid: cdc7d31ecd86bae4686e8cad5d047389, type: 3}
   UILayer: 0
   Cacheable: 1
   PrecacheOnStart: 1
-  CloseOnNextScreen: 0
-  _allowedScreens: 

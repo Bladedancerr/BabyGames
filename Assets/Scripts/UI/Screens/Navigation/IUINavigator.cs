@@ -2,6 +2,6 @@ using UnityEngine;
 
 public interface IUINavigator
 {
-    void RequestScreenOpen(ScreenType screenType);
+    void RequestScreenOpen(ScreenType target, int depth, ScreenType until, bool clear);
     void RequestBack();
 }

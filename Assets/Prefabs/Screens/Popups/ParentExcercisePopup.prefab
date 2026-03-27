@@ -268,7 +268,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf601e175f79e9942b337d70663f7b1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ParentPortalExcercisePopup
-  _screenType: 1
+  _screenType: 2
   _excerciseInputField: {fileID: 6547077423532221800}
   _excerciseCondition: {fileID: 11400000, guid: 7d7ad039de9e0f644a6fa745fd52530a, type: 2}
   _testExcerciseValue: lasha

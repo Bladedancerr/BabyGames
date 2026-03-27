@@ -23,7 +23,7 @@ public class ParentPortalExcercisePopup : Screen
     public void OnSubmitClicked()
     {
         bool isCorrect = _excerciseInputField.text == _testExcerciseValue;
-        ConditionManager.Instance.Set(_excerciseCondition.UniqueID, isCorrect);
+        _conditionService.Set(_excerciseCondition.UniqueID, isCorrect);
     }
 
     private void OnDisable()

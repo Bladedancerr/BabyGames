@@ -6,6 +6,9 @@ public class UICoordinator : MonoBehaviour, IUICoordinator
     [SerializeField]
     private UINavigationRules _navigationRules;
 
+    [SerializeField]
+    private UINavigationRule _defaultNavigationRule;
+
     private IUINavigator _uiNavigator;
     private IConditionService _conditionService;
 
@@ -30,7 +33,7 @@ public class UICoordinator : MonoBehaviour, IUICoordinator
             return;
         }
 
-        _uiNavigator.RequestScreenOpen(ScreenType.MAINMENUSCREEN);
+        _uiNavigator.RequestScreenOpen(_defaultNavigationRule.Target, _defaultNavigationRule.PruneDepth, _defaultNavigationRule.PruneUntil, _defaultNavigationRule.ClearStack);
     }
 
     public void RequestGoTo(string contextID)
@@ -42,7 +45,7 @@ public class UICoordinator : MonoBehaviour, IUICoordinator
 
         if (CanGoTo(rule))
         {
-            _uiNavigator.RequestScreenOpen(rule.Target);
+            _uiNavigator.RequestScreenOpen(rule.Target, rule.PruneDepth, rule.PruneUntil, rule.ClearStack);
 
             foreach (var cond in rule.Conditions)
             {

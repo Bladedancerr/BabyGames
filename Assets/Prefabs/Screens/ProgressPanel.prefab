@@ -198,7 +198,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.5330188, g: 1, b: 0.63896513, a: 0.392}
+  m_Color: {r: 0.5518868, g: 0.7758824, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -227,7 +227,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0a5da38d214bfb40a2dfca9e00d8031, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BaseScreenTest
-  _screenType: 5
+  _screenType: 6
 --- !u!1001 &5467870529902700784
 PrefabInstance:
   m_ObjectHideFlags: 0

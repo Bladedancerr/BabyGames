@@ -12,10 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3f9b55e8f757dd4bb79aecc766e3abe, type: 3}
   m_Name: ParentExcercisePopup
   m_EditorClassIdentifier: Assembly-CSharp::ScreenData
-  ScreenType: 1
+  ScreenType: 2
   ScreenPrefab: {fileID: 1927101048670595397, guid: 7017f2c2720bacf418f0fe39d1cc0f88, type: 3}
   UILayer: 1
   Cacheable: 1
   PrecacheOnStart: 1
-  CloseOnNextScreen: 1
-  _allowedScreens: 02000000

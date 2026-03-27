@@ -12,9 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3f9b55e8f757dd4bb79aecc766e3abe, type: 3}
   m_Name: ParentPortal
   m_EditorClassIdentifier: Assembly-CSharp::ScreenData
-  ScreenType: 2
+  ScreenType: 3
   ScreenPrefab: {fileID: 8742914362535443709, guid: d80076b43e9c5b34289a1101db36c97f, type: 3}
   UILayer: 0
   Cacheable: 1
   PrecacheOnStart: 1
-  _allowedScreens: 00000000

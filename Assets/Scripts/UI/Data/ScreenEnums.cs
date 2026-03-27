@@ -1,0 +1,16 @@
+public enum ScreenType
+{
+    MAINMENUSCREEN,
+    PARENTPORTALPOPUP,
+    PARENTPORTALSCREEN,
+    CHILDPROFILESCREEN,
+    PARAMETERSSCREEN,
+    PROGRESSSCREEN,
+    INFOSCREEN,
+}
+
+public enum UILayer
+{
+    Screen,
+    Popup
+}

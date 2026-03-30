@@ -52,17 +52,24 @@ public class ScreensManager : MonoBehaviour, IUINavigator
         {
             if (_screenProvider is IPreCacheableScreenProvider cacheable)
             {
-                Precache(cacheable);
+                StartCoroutine(Precache(cacheable));
             }
         }
     }
 
-    private void Precache(IPreCacheableScreenProvider provider)
+    private IEnumerator Precache(IPreCacheableScreenProvider provider)
     {
+        yield return null;
         Transform parent;
 
         foreach (var data in _screenDataContainer.Screens)
         {
+            if (data == null)
+            {
+                continue;
+            }
+
+            yield return null;
             parent = GetScreenParent(data.UILayer);
             if (data.PrecacheOnStart)
             {

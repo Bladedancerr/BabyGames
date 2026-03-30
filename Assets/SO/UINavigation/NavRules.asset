@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1c423b63c6571c49b637605294f50b1, type: 3}
+  m_Name: NavRules
+  m_EditorClassIdentifier: Assembly-CSharp::UINavigationRules
+  Rules:
+  - {fileID: 11400000, guid: 5285583ce6be53e44acdb20bbf7b82c8, type: 2}
+  - {fileID: 11400000, guid: 490c82bde23e76e4cba4452e290ed808, type: 2}
+  - {fileID: 11400000, guid: 5b1a1c55b4099f04aa54aa8e1f28bd4d, type: 2}
+  - {fileID: 11400000, guid: a80e7c29fbf225842904ada7daf79787, type: 2}
+  - {fileID: 11400000, guid: 8df02d978856bdd41bfa3c87eafd6428, type: 2}
+  - {fileID: 11400000, guid: ffb4a7ffca25d5e49b14eeed300729fd, type: 2}
+  - {fileID: 11400000, guid: a6e5861db8e4a9d4ba3802a92c62393e, type: 2}
+  - {fileID: 11400000, guid: 145ef2c97994c6942b7b9d9def78fdde, type: 2}
+  - {fileID: 11400000, guid: b627dbbc094fab84392638117036c737, type: 2}

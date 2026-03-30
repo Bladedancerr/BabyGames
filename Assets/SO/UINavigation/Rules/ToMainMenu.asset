@@ -9,6 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 87a7c5210c0626248b22a3e45a300993, type: 3}
-  m_Name: ParentExcercise
-  m_EditorClassIdentifier: Assembly-CSharp::ConditionDefinition
+  m_Script: {fileID: 11500000, guid: 9a17c9403bf526d43bb906ee4febb59d, type: 3}
+  m_Name: ToMainMenu
+  m_EditorClassIdentifier: Assembly-CSharp::UINavigationRule
+  ContextID: ToMainMenu
+  Target: 1
+  Conditions: []
+  PruneUntil: 1
+  PruneDepth: 0
+  ClearStack: 0

@@ -10,7 +10,6 @@ public abstract class Screen : MonoBehaviour, IScreen
     public ScreenType ScreenType { get { return _screenType; } }
     public Transform Transform { get { return transform; } }
 
-
     public virtual void Initialize(IUINavigator uiNavigator)
     {
         _uiNavigator = uiNavigator;

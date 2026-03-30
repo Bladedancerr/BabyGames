@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87a7c5210c0626248b22a3e45a300993, type: 3}
+  m_Name: ParentExercise
+  m_EditorClassIdentifier: Assembly-CSharp::ConditionDefinition
+  UniqueID: ea7c152d-7150-4501-843f-507fbe4bb278
+  ResetOnChange: 0

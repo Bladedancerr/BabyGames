@@ -271,4 +271,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f8c6948f1cf22d42b49b0a9600dd5c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NavigationButton
-  _contextID: TOMAINMENUSCREEN
+  _contextID: ToChildProfile

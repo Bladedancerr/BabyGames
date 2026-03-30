@@ -83,16 +83,16 @@ public class ConditionManager : MonoBehaviour, IConditionService
         }
     }
 
-    // for testing
+    //// for testing
 
-    [SerializeField]
-    private ConditionDefinition _testCondition;
+    // [SerializeField]
+    // private ConditionDefinition _testCondition;
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space) && _testCondition != null)
-        {
-            _conditionValues[_testCondition.UniqueID] = !_conditionValues[_testCondition.UniqueID];
-        }
-    }
+    // private void Update()
+    // {
+    //     if (Input.GetKeyDown(KeyCode.Space) && _testCondition != null)
+    //     {
+    //         _conditionValues[_testCondition.UniqueID] = !_conditionValues[_testCondition.UniqueID];
+    //     }
+    // }
 }

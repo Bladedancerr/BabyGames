@@ -46,7 +46,7 @@ public class ScreensManager : MonoBehaviour, IUINavigator
         }
 
         _screenStack = new Stack<IScreen>();
-        _screenProvider = new SimpleScreenProvider();
+        _screenProvider = new PooledScreenProvider();
 
         if (_preCache)
         {

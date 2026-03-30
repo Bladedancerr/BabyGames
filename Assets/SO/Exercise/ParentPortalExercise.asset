@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60b059db9e1590e4e857d8aa5c026f2f, type: 3}
+  m_Name: ParentPortalExercise
+  m_EditorClassIdentifier: Assembly-CSharp::ParentPortalExerciseContainer
+  Excercises:
+  - Excercise: 9+7
+    Result: 16
+  - Excercise: 12+6
+    Result: 18
+  - Excercise: 18+9
+    Result: 27
+  - Excercise: 7+15
+    Result: 22
+  - Excercise: 9-7
+    Result: 2
+  - Excercise: 12-6
+    Result: 6
+  - Excercise: 18-9
+    Result: 9
+  - Excercise: 15-7
+    Result: 8
+  - Excercise: "3\xD72"
+    Result: 6
+  - Excercise: "4\xD73"
+    Result: 12
+  - Excercise: "6\xD73"
+    Result: 18
+  - Excercise: "4\xD77"
+    Result: 28
+  - Excercise: "12\xF74"
+    Result: 3
+  - Excercise: "18\xF73"
+    Result: 6
+  - Excercise: "8\xF72"
+    Result: 4
+  - Excercise: "21\xF77"
+    Result: 3

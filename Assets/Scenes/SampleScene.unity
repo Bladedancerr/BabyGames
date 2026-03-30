@@ -164,13 +164,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UICoordinator
   _navigationRules: {fileID: 11400000, guid: acf71bd8fe6051f41a88fcc5fb14951b, type: 2}
-  _defaultNavigationRule:
-    ContextID: TOMAINMENUSCREEN
-    Target: 1
-    Conditions: []
-    PruneUntil: 0
-    PruneDepth: 0
-    ClearStack: 0
+  _defaultNavigationRule: {fileID: 11400000, guid: 5b1a1c55b4099f04aa54aa8e1f28bd4d, type: 2}
 --- !u!1 &511275294
 GameObject:
   m_ObjectHideFlags: 0
@@ -581,7 +575,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ConditionManager
   _conditionsContainer: {fileID: 11400000, guid: 67f8e97eb0a736b4cadb139846976a1b, type: 2}
-  _testCondition: {fileID: 0}
 --- !u!1 &2052120487
 GameObject:
   m_ObjectHideFlags: 0
@@ -691,6 +684,6 @@ SceneRoots:
   - {fileID: 511275298}
   - {fileID: 2052120491}
   - {fileID: 1380179710}
-  - {fileID: 1834897257}
   - {fileID: 1924780194}
+  - {fileID: 1834897257}
   - {fileID: 25823798}

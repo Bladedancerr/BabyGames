@@ -34,6 +34,7 @@ public class ConditionManager : MonoBehaviour, IConditionService
             {
                 _conditionValues[uID] = !value;
             }
+            Debug.Log($"conditionsmanager set {uID} to {value}");
         }
     }
 

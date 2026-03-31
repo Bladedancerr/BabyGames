@@ -81,11 +81,11 @@ public class ScreensManager : MonoBehaviour, IUINavigator
 
     public void RequestScreenOpen(ScreenType target, int depth, ScreenType until, bool clear)
     {
-        Debug.Log($"screensmanager screen open requested {target}");
+        // Debug.Log($"screensmanager screen open requested {target}");
 
         if (clear)
         {
-            Debug.Log("screensmanager clear requested");
+            // Debug.Log("screensmanager clear requested");
             ClearStack();
         }
 
@@ -96,7 +96,7 @@ public class ScreensManager : MonoBehaviour, IUINavigator
         }
         else if (until != ScreenType.NONE)
         {
-            Debug.Log("screensmanager until is set");
+            // Debug.Log("screensmanager until is set");
             while (_screenStack.Count > 0 && _screenStack.Peek().ScreenType != until)
             {
                 var top = _screenStack.Pop();
@@ -107,7 +107,7 @@ public class ScreensManager : MonoBehaviour, IUINavigator
         }
         else
         {
-            Debug.Log("screensmanager until is not set using depth");
+            // Debug.Log("screensmanager until is not set using depth");
             for (int i = 0; i < depth; i++)
             {
                 if (_screenStack.Count == 0)
@@ -134,7 +134,7 @@ public class ScreensManager : MonoBehaviour, IUINavigator
 
     public void RequestBack()
     {
-        Debug.Log("screensmanager back requested");
+        // Debug.Log("screensmanager back requested");
 
         if (_screenStack.Count <= 1)
         {

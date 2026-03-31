@@ -9,7 +9,8 @@ public enum ScreenType
     PROGRESSSCREEN,
     INFOSCREEN,
     PURCHASEPREMIUMPOPUP,
-    VOCABULARYMAP
+    VOCABULARYMAP,
+    GAMEINFOPOPUP
 }
 
 public enum UILayer

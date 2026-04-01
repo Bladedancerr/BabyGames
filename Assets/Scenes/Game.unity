@@ -1031,7 +1031,7 @@ LineRenderer:
   m_Positions: []
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 1
+    widthMultiplier: 1.2
     widthCurve:
       serializedVersion: 2
       m_Curve:
@@ -1042,8 +1042,8 @@ LineRenderer:
         outSlope: 0
         tangentMode: 0
         weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
+        inWeight: 0
+        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -1142,7 +1142,10 @@ MonoBehaviour:
   - {fileID: 1683334465}
   - {fileID: 1373332948}
   _pointIndex: 0
-  _distanceChecker: 0.35
+  _distanceChecker: 0.6
+  _resetDistanceChecker: 1.5
+  _maxDistanceBetweenPoints: 0.15
+  _smoothedPoints: []
 --- !u!1 &1650941565
 GameObject:
   m_ObjectHideFlags: 0

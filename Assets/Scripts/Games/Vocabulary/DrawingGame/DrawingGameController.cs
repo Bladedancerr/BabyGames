@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DrawingGameController : MonoBehaviour
+public class DrawingGameController : BaseGameController<DrawingVocabularyGameData>
 {
     [SerializeField]
     private PathData _pathData;
@@ -28,14 +28,7 @@ public class DrawingGameController : MonoBehaviour
 
     private void Start()
     {
-        _lineDrawer = new LineRendererDrawer(GetComponent<LineRenderer>());
-        _inputProvider = new DrawingGameTouchInputProvider(Camera.main);
-        _pathGenerator = new CatmullRomPathGenerator(_maxDistanceBetweenPoints);
-
-        _distanceCheckerSqr = _distanceChecker * _distanceChecker;
-        _resetDistanceCheckerSqr = _resetDistanceChecker * _resetDistanceChecker;
-
-        _smoothedPoints = _pathGenerator.GeneratePath(_pathData.Waypoints);
+        Init();
     }
 
     private void Update()
@@ -115,5 +108,25 @@ public class DrawingGameController : MonoBehaviour
         {
             Gizmos.DrawWireSphere(point, 0.1f);
         }
+    }
+
+    public override void Init()
+    {
+        _lineDrawer = new LineRendererDrawer(GetComponent<LineRenderer>());
+        _inputProvider = new DrawingGameTouchInputProvider(Camera.main);
+        _pathGenerator = new CatmullRomPathGenerator(_maxDistanceBetweenPoints);
+
+        _distanceCheckerSqr = _distanceChecker * _distanceChecker;
+        _resetDistanceCheckerSqr = _resetDistanceChecker * _resetDistanceChecker;
+
+        _smoothedPoints = _pathGenerator.GeneratePath(_pathData.Waypoints);
+    }
+
+    public override void StartGame()
+    {
+    }
+
+    public override void FinishGame()
+    {
     }
 }

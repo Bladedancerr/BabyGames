@@ -439,6 +439,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GameOrchestrator
   _gameControllers:
   - {fileID: 1150179978287405986, guid: fbd39db2804333642a9410843a23bbeb, type: 3}
+  _gamedatas:
+  - {fileID: 11400000, guid: e25b21f84955e6f4fa9ae2e1e316e504, type: 2}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

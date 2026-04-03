@@ -6,23 +6,39 @@ public class GameOrchestrator : MonoBehaviour
     [SerializeField]
     private BaseGameController[] _gameControllers;
 
+    [SerializeField]
     private GameData[] _gamedatas;
 
-    private Dictionary<GameType, BaseGameController> _gameconntrollersLookup;
+    private Dictionary<GameType, Dictionary<GameTypeInternal, BaseGameController>> _gameconntrollersLookup;
+    private Dictionary<GameType, Dictionary<GameTypeInternal, GameData>> _gamedatasLookup;
+
 
     private void Start()
     {
+        _gameconntrollersLookup = new Dictionary<GameType, Dictionary<GameTypeInternal, BaseGameController>>();
         foreach (var controller in _gameControllers)
         {
-            Debug.Log($"controller: gametype{controller.GameType}");
+            if (!_gameconntrollersLookup.ContainsKey(controller.GameType))
+            {
+                _gameconntrollersLookup[controller.GameType] = new Dictionary<GameTypeInternal, BaseGameController>();
+            }
+
+            _gameconntrollersLookup[controller.GameType][controller.InternalGameType] = controller;
         }
 
-        _gameconntrollersLookup = new Dictionary<GameType, BaseGameController>();
-        foreach (var controller in _gameControllers)
+        _gamedatasLookup = new Dictionary<GameType, Dictionary<GameTypeInternal, GameData>>();
+
+        foreach (var data in _gamedatas)
         {
-            _gameconntrollersLookup.Add(controller.GameType, controller);
+            if (!_gamedatasLookup.ContainsKey(data.GameType))
+            {
+                _gamedatasLookup[data.GameType] = new Dictionary<GameTypeInternal, GameData>();
+            }
+
+            _gamedatasLookup[data.GameType][data.InternalGameType] = data;
         }
 
-        Instantiate(_gameconntrollersLookup[GameType.VOCABULARY]);
+        var spawned = Instantiate(_gameconntrollersLookup[GameType.VOCABULARY][GameTypeInternal.VOCABULARY_DRAW_LETTER]);
+        spawned.TryInit(_gamedatasLookup[GameType.VOCABULARY][GameTypeInternal.VOCABULARY_DRAW_LETTER]);
     }
 }

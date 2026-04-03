@@ -4,5 +4,6 @@ using UnityEngine;
 public abstract class GameData : ScriptableObject
 {
     public GameType GameType;
+    public GameTypeInternal InternalGameType;
     public int ID;
 }

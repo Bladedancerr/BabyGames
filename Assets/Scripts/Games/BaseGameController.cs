@@ -1,10 +1,7 @@
 using UnityEngine;
 
-public abstract class BaseGameController<TData, TType> : BaseGameController where TData : GameData
+public abstract class BaseGameController<TData> : BaseGameController where TData : GameData
 {
-    [SerializeField]
-    protected TType _internalGameType;
-
     [SerializeField]
     protected TData _gameData;
 
@@ -16,6 +13,10 @@ public abstract class BaseGameController<TData, TType> : BaseGameController wher
             Init();
             return true;
         }
+        else
+        {
+            Debug.LogError($"incorrect data assigned {data} to {this}");
+        }
 
         return false;
     }
@@ -24,6 +25,8 @@ public abstract class BaseGameController<TData, TType> : BaseGameController wher
 public abstract class BaseGameController : MonoBehaviour, IGameInstance
 {
     public GameType GameType;
+    public GameTypeInternal InternalGameType;
+
     public abstract bool TryInit(GameData data);
     public abstract void Init();
     public abstract void StartGame();

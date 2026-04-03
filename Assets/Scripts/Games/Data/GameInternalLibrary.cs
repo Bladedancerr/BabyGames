@@ -5,6 +5,7 @@ public class GameInternalLibrary : ScriptableObject
 {
     [Header("internal type of the game")]
     public GameTypeInternal GameTypeInternal;
+
     [Header("controller for this specific game")]
     [Header("for example vocabulary/drawing")]
     public BaseGameController BaseGameController;

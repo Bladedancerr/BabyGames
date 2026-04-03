@@ -4,9 +4,6 @@ using UnityEngine;
 public class DrawingGameController : BaseGameController<DrawingVocabularyGameData>
 {
     [SerializeField]
-    private PathData _pathData;
-
-    [SerializeField]
     private float _distanceChecker = 0;
 
     [SerializeField]
@@ -25,11 +22,6 @@ public class DrawingGameController : BaseGameController<DrawingVocabularyGameDat
 
     private float _distanceCheckerSqr;
     private float _resetDistanceCheckerSqr;
-
-    private void Start()
-    {
-        Init();
-    }
 
     private void Update()
     {
@@ -88,13 +80,18 @@ public class DrawingGameController : BaseGameController<DrawingVocabularyGameDat
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(_touchPos, _distanceChecker);
 
-        if (_pathData == null)
+        if (_gameData == null)
+        {
+            return;
+        }
+
+        if (_gameData.PathData == null)
         {
             return;
         }
 
         Gizmos.color = Color.yellow;
-        foreach (var point in _pathData.Waypoints)
+        foreach (var point in _gameData.PathData.Waypoints)
         {
             Gizmos.DrawWireSphere(point, 0.2f);
         }
@@ -119,11 +116,14 @@ public class DrawingGameController : BaseGameController<DrawingVocabularyGameDat
         _distanceCheckerSqr = _distanceChecker * _distanceChecker;
         _resetDistanceCheckerSqr = _resetDistanceChecker * _resetDistanceChecker;
 
-        _smoothedPoints = _pathGenerator.GeneratePath(_pathData.Waypoints);
+        _smoothedPoints = _pathGenerator.GeneratePath(_gameData.PathData.Waypoints);
+
+        var spawnedGame = Instantiate(_gameData.GamePrefab);
     }
 
     public override void StartGame()
     {
+        Debug.Log($"{this.GetType()} game started");
     }
 
     public override void FinishGame()

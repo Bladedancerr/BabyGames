@@ -1,44 +1,117 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GameOrchestrator : MonoBehaviour
 {
     [SerializeField]
-    private BaseGameController[] _gameControllers;
+    private GameLibrary[] _gameLibraries;
 
-    [SerializeField]
-    private GameData[] _gamedatas;
+    // key is maingametype, in inner dict key is internalgametype + index separated with _
+    private Dictionary<GameType, Dictionary<string, GameData>> _gameDataLookup;
 
-    private Dictionary<GameType, Dictionary<GameTypeInternal, BaseGameController>> _gameconntrollersLookup;
-    private Dictionary<GameType, Dictionary<GameTypeInternal, GameData>> _gamedatasLookup;
+    // key is maingametype + internalgametype separated with _
+    private Dictionary<string, BaseGameController> _controllersLookup;
 
+    private string _merger = "_";
+
+    private void Awake()
+    {
+        SetupLookups();
+    }
 
     private void Start()
     {
-        _gameconntrollersLookup = new Dictionary<GameType, Dictionary<GameTypeInternal, BaseGameController>>();
-        foreach (var controller in _gameControllers)
-        {
-            if (!_gameconntrollersLookup.ContainsKey(controller.GameType))
-            {
-                _gameconntrollersLookup[controller.GameType] = new Dictionary<GameTypeInternal, BaseGameController>();
-            }
+        // for testing
+        var game = GetGame(GameType.VOCABULARY, GameTypeInternal.VOCABULARY_DRAW_LETTER);
+        var data = GetGameData(GameType.VOCABULARY, GameTypeInternal.VOCABULARY_DRAW_LETTER, 0);
 
-            _gameconntrollersLookup[controller.GameType][controller.InternalGameType] = controller;
+        if (game == null || data == null)
+        {
+            return;
         }
 
-        _gamedatasLookup = new Dictionary<GameType, Dictionary<GameTypeInternal, GameData>>();
-
-        foreach (var data in _gamedatas)
+        if (game.TryInit(data))
         {
-            if (!_gamedatasLookup.ContainsKey(data.GameType))
+            game.StartGame();
+        }
+    }
+
+    private void SetupLookups()
+    {
+        _gameDataLookup = new Dictionary<GameType, Dictionary<string, GameData>>();
+        _controllersLookup = new Dictionary<string, BaseGameController>();
+
+        foreach (var lib in _gameLibraries)
+        {
+            if (!_gameDataLookup.ContainsKey(lib.MainType))
             {
-                _gamedatasLookup[data.GameType] = new Dictionary<GameTypeInternal, GameData>();
+                _gameDataLookup[lib.MainType] = new Dictionary<string, GameData>();
             }
 
-            _gamedatasLookup[data.GameType][data.InternalGameType] = data;
+            foreach (var internalLib in lib.GameInternalLibraries)
+            {
+                string controllerKey = GetKey(_merger, lib.MainType, internalLib.GameTypeInternal);
+
+                _controllersLookup[controllerKey] = internalLib.BaseGameController;
+
+                for (int i = 0; i < internalLib.GameDatas.Length; i++)
+                {
+                    string dataKey = GetKey(_merger, internalLib.GameTypeInternal, i);
+                    _gameDataLookup[lib.MainType][dataKey] = internalLib.GameDatas[i];
+                }
+            }
         }
 
-        var spawned = Instantiate(_gameconntrollersLookup[GameType.VOCABULARY][GameTypeInternal.VOCABULARY_DRAW_LETTER]);
-        spawned.TryInit(_gamedatasLookup[GameType.VOCABULARY][GameTypeInternal.VOCABULARY_DRAW_LETTER]);
+        LogLookups();
+    }
+
+    private BaseGameController GetGame(GameType type, GameTypeInternal internalType)
+    {
+        string controllerKey = GetKey(_merger, type, internalType);
+
+        var controller = _controllersLookup[controllerKey];
+
+        if (controller == null)
+        {
+            return null;
+        }
+
+        return Instantiate(controller);
+    }
+
+    private GameData GetGameData(GameType type, GameTypeInternal internalType, int index)
+    {
+        string dataKey = GetKey(_merger, internalType, index);
+        var data = _gameDataLookup[type][dataKey];
+
+        if (data == null)
+        {
+            return null;
+        }
+
+        return data;
+    }
+
+    private void LogLookups()
+    {
+        foreach (var data in _gameDataLookup)
+        {
+            Debug.Log($"data lookup: key: {data.Key}");
+            foreach (var gameData in data.Value)
+            {
+                Debug.Log($"data lookup inner: key: {gameData.Key} value: {gameData.Value}");
+            }
+        }
+
+        foreach (var controller in _controllersLookup)
+        {
+            Debug.Log($"controller lookup: key: {controller.Key} value: {controller.Value}");
+        }
+    }
+
+    private string GetKey(string merger, params object[] args)
+    {
+        return string.Join(merger, args);
     }
 }

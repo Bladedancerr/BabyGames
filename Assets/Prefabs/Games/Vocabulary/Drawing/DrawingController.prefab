@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5644043344617060285}
   - component: {fileID: 1150179978287405986}
   m_Layer: 0
-  m_Name: Line
+  m_Name: DrawingController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

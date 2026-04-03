@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DrawingGameController : BaseGameController<DrawingVocabularyGameData>
+public class DrawingGameController : BaseGameController<DrawingVocabularyGameData, VocabularyGameType>
 {
     [SerializeField]
     private PathData _pathData;

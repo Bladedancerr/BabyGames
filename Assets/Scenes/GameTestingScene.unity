@@ -370,7 +370,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &535276776
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -519,7 +519,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &626207206
 Transform:
   m_ObjectHideFlags: 0
@@ -549,7 +549,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FindingGameController
   GameType: 0
   InternalGameType: 0
-  _gameData: {fileID: 0}
   _interactableLayer:
     serializedVersion: 2
     m_Bits: 8
@@ -571,7 +570,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!212 &1486167884
 SpriteRenderer:
   serializedVersion: 2
@@ -722,7 +721,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1606942114
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -948,7 +947,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2178884894513867949
 MonoBehaviour:
   m_ObjectHideFlags: 0

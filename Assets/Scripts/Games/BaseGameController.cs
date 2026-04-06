@@ -2,7 +2,6 @@ using UnityEngine;
 
 public abstract class BaseGameController<TData> : BaseGameController where TData : GameData
 {
-    [SerializeField]
     protected TData _gameData;
 
     public override bool TryInit(GameData data)

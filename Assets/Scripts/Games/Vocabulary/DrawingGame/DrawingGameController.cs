@@ -17,7 +17,7 @@ public class DrawingGameController : BaseGameController<DrawingVocabularyGameDat
     [SerializeField]
     private List<Vector2> _smoothedPoints;
     private ILineDrawer _lineDrawer;
-    private IDrawingGameInputProvider _inputProvider;
+    private IPointerInputProvider _inputProvider;
     private IPathGenerator<Vector2> _pathGenerator;
 
     private float _distanceCheckerSqr;
@@ -33,15 +33,6 @@ public class DrawingGameController : BaseGameController<DrawingVocabularyGameDat
         }
 
         _inputProvider.Tick();
-
-        if (!_inputProvider.IsActive)
-        {
-            return;
-        }
-        Vector2 inputPos = _inputProvider.GetPos();
-
-        CheckProgress(inputPos);
-        _touchPos = inputPos;
     }
 
     private void CheckProgress(Vector2 pos)
@@ -117,7 +108,15 @@ public class DrawingGameController : BaseGameController<DrawingVocabularyGameDat
     public override void Init()
     {
         _lineDrawer = new LineRendererDrawer(GetComponent<LineRenderer>());
-        _inputProvider = new DrawingGameTouchInputProvider(Camera.main);
+
+#if UNITY_EDITOR
+        _inputProvider = new MouseInputProvider(Camera.main);
+#else
+        _inputProvider = new TouchInputProvider(Camera.main);
+#endif
+
+        _inputProvider.OnPointerMove += HandlePointerMove;
+
         _pathGenerator = new CatmullRomPathGenerator(_maxDistanceBetweenPoints);
 
         _distanceCheckerSqr = _distanceChecker * _distanceChecker;
@@ -144,5 +143,19 @@ public class DrawingGameController : BaseGameController<DrawingVocabularyGameDat
             Destroy(_spawnedGame);
         }
         _spawnedGame = null;
+    }
+
+    private void HandlePointerMove(Vector2 position)
+    {
+        CheckProgress(position);
+        _touchPos = position;
+    }
+
+    private void OnDestroy()
+    {
+        if (_inputProvider != null)
+        {
+            _inputProvider.OnPointerMove -= HandlePointerMove;
+        }
     }
 }

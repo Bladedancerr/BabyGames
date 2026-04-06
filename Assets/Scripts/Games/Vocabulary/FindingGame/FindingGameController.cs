@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class FindingGameController : BaseGameController<GameData>
 {
-    private IInputProvider _inputProvider;
+    private IPointerInputProvider _inputProvider;
 
     [SerializeField]
     private LayerMask _interactableLayer;

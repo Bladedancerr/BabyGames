@@ -31,14 +31,14 @@ public class GameOrchestrator : Singleton<GameOrchestrator>, IGameOrchestrator
         SetupLookups();
     }
 
-    // //for testing
-    // private void Update()
-    // {
-    //     if (Input.GetKeyDown(KeyCode.Space))
-    //     {
-    //         StartGame(_gameType, _gameTypeInternal, _gameIndex);
-    //     }
-    // }
+    //for testing
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            StartGame(_gameType, _gameTypeInternal, _gameIndex);
+        }
+    }
 
     public void StartGame(GameType gameType, GameTypeInternal gameTypeInternal, int gameIndex)
     {

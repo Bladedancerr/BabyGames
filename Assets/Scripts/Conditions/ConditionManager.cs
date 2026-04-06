@@ -1,23 +1,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ConditionManager : MonoBehaviour, IConditionService
+public class ConditionManager : Singleton<ConditionManager>, IConditionService
 {
     [SerializeField]
     private ConditionsContainer _conditionsContainer;
 
     private Dictionary<string, ConditionDefinition> _conditionsLookup;
     private Dictionary<string, bool> _conditionValues;
-
-    public static ConditionManager Instance { get; private set; }
-
-    private void Awake()
-    {
-        if (Instance == null)
-        {
-            Instance = this;
-        }
-    }
 
     private void Start()
     {

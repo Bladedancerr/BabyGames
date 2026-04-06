@@ -13,11 +13,8 @@ public abstract class BaseGameController<TData> : BaseGameController where TData
             Init();
             return true;
         }
-        else
-        {
-            Debug.LogError($"incorrect data assigned {data} to {this}");
-        }
 
+        Debug.LogError($"incorrect data assigned {data} to {this}");
         return false;
     }
 }
@@ -31,4 +28,5 @@ public abstract class BaseGameController : MonoBehaviour, IGameInstance
     public abstract void Init();
     public abstract void StartGame();
     public abstract void FinishGame();
+    public abstract void ResetGame();
 }

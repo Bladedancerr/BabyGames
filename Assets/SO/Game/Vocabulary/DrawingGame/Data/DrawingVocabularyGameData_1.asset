@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a19b531defd33a418d6ba18f69adb00, type: 3}
+  m_Name: DrawingVocabularyGameData_1
+  m_EditorClassIdentifier: Assembly-CSharp::DrawingVocabularyGameData
+  GameType: 0
+  InternalGameType: 0
+  ID: 1
+  GamePrefab: {fileID: 9080118235703015381, guid: 0a84f812cf739b240b7172448deab7a5, type: 3}
+  OnMapButtonIcon: {fileID: 0}
+  PathData: {fileID: 11400000, guid: e665ee2f5ac46714aa380ebf003a3e9b, type: 2}

@@ -1,7 +1,7 @@
 using System.Linq;
 using UnityEngine;
 
-public class UICoordinator : MonoBehaviour, IUICoordinator
+public class UICoordinator : Singleton<UICoordinator>, IUICoordinator
 {
     [SerializeField]
     private UINavigationRules _navigationRules;
@@ -11,16 +11,6 @@ public class UICoordinator : MonoBehaviour, IUICoordinator
 
     private IUINavigator _uiNavigator;
     private IConditionService _conditionService;
-
-    public static UICoordinator Instance { get; private set; }
-
-    private void Awake()
-    {
-        if (Instance == null)
-        {
-            Instance = this;
-        }
-    }
 
     private void Start()
     {

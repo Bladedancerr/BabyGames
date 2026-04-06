@@ -1,8 +1,7 @@
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
-public class GameOrchestrator : MonoBehaviour
+public class GameOrchestrator : Singleton<GameOrchestrator>, IGameOrchestrator
 {
     [SerializeField]
     private GameLibrary[] _gameLibraries;
@@ -15,26 +14,63 @@ public class GameOrchestrator : MonoBehaviour
 
     private string _merger = "_";
 
-    private void Awake()
+    [SerializeField]
+    private GameType _gameType;
+    [SerializeField]
+    private GameTypeInternal _gameTypeInternal;
+    [SerializeField]
+    private int _gameIndex;
+
+    private GameData _gameData;
+    private BaseGameController _gameController;
+
+
+    protected override void Awake()
     {
+        base.Awake();
         SetupLookups();
     }
 
-    private void Start()
-    {
-        // for testing
-        var game = GetGame(GameType.VOCABULARY, GameTypeInternal.VOCABULARY_DRAW_LETTER);
-        var data = GetGameData(GameType.VOCABULARY, GameTypeInternal.VOCABULARY_DRAW_LETTER, 0);
+    // //for testing
+    // private void Update()
+    // {
+    //     if (Input.GetKeyDown(KeyCode.Space))
+    //     {
+    //         StartGame(_gameType, _gameTypeInternal, _gameIndex);
+    //     }
+    // }
 
-        if (game == null || data == null)
+    public void StartGame(GameType gameType, GameTypeInternal gameTypeInternal, int gameIndex)
+    {
+        ResetGame();
+
+        _gameIndex = gameIndex;
+
+        _gameController = GetGame(gameType, gameTypeInternal);
+        _gameData = GetGameData(gameType, gameTypeInternal, _gameIndex);
+
+        if (_gameController == null || _gameData == null)
         {
             return;
         }
 
-        if (game.TryInit(data))
+        if (_gameController.TryInit(_gameData))
         {
-            game.StartGame();
+            _gameController.StartGame();
         }
+    }
+
+    public void ResetGame()
+    {
+        if (_gameController != null)
+        {
+            _gameController.ResetGame();
+            Destroy(_gameController.gameObject);
+        }
+
+        _gameIndex = -1;
+        _gameData = null;
+        _gameController = null;
     }
 
     private void SetupLookups()

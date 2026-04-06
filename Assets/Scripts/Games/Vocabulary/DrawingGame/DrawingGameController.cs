@@ -23,8 +23,15 @@ public class DrawingGameController : BaseGameController<DrawingVocabularyGameDat
     private float _distanceCheckerSqr;
     private float _resetDistanceCheckerSqr;
 
+    private GameObject _spawnedGame;
+
     private void Update()
     {
+        if (_inputProvider == null)
+        {
+            return;
+        }
+
         _inputProvider.Tick();
 
         if (!_inputProvider.IsActive)
@@ -118,7 +125,7 @@ public class DrawingGameController : BaseGameController<DrawingVocabularyGameDat
 
         _smoothedPoints = _pathGenerator.GeneratePath(_gameData.PathData.Waypoints);
 
-        var spawnedGame = Instantiate(_gameData.GamePrefab);
+        _spawnedGame = Instantiate(_gameData.GamePrefab);
     }
 
     public override void StartGame()
@@ -128,5 +135,14 @@ public class DrawingGameController : BaseGameController<DrawingVocabularyGameDat
 
     public override void FinishGame()
     {
+    }
+
+    public override void ResetGame()
+    {
+        if (_spawnedGame != null)
+        {
+            Destroy(_spawnedGame);
+        }
+        _spawnedGame = null;
     }
 }

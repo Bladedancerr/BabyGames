@@ -16,3 +16,7 @@ MonoBehaviour:
   BaseGameController: {fileID: 1150179978287405986, guid: fbd39db2804333642a9410843a23bbeb, type: 3}
   GameDatas:
   - {fileID: 11400000, guid: e25b21f84955e6f4fa9ae2e1e316e504, type: 2}
+  - {fileID: 11400000, guid: 864b7d896f646034985d21bb6215d711, type: 2}
+  - {fileID: 11400000, guid: a969392f87b513a46bf26454f0a53d07, type: 2}
+  - {fileID: 11400000, guid: 693219a7922f0664796864b449d0fa1b, type: 2}
+  - {fileID: 11400000, guid: 9628d9b23dd467d40ae7ffd64f735c5f, type: 2}

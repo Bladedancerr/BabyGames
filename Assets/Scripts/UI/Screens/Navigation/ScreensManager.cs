@@ -2,10 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ScreensManager : MonoBehaviour, IUINavigator
+public class ScreensManager : Singleton<ScreensManager>, IUINavigator
 {
-    public static ScreensManager Instance { get; private set; }
-
     [SerializeField]
     private ScreenDataContainer _screenDataContainer;
 
@@ -21,13 +19,9 @@ public class ScreensManager : MonoBehaviour, IUINavigator
     private Stack<IScreen> _screenStack;
     private IScreenProvider _screenProvider;
 
-    private void Awake()
+    protected override void Awake()
     {
-        if (Instance == null)
-        {
-            Instance = this;
-        }
-
+        base.Awake();
         Init();
     }
 

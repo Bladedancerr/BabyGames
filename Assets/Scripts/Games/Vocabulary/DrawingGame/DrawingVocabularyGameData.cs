@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "DrawingVocabularyGameData", menuName = "Game/Data/Vocabulary/Drawing")]
+[CreateAssetMenu(fileName = "DrawingVocabularyGameData", menuName = "Game/Data/Vocabulary/PerGame/Drawing")]
 public class DrawingVocabularyGameData : VocabularyGameData
 {
     [SerializeField]

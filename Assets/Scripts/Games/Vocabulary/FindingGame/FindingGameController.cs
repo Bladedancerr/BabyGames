@@ -8,6 +8,8 @@ public class FindingGameController : BaseGameController<GameData>
     [SerializeField]
     private LayerMask _interactableLayer;
 
+    private IPressable _currentInteractable;
+
     private void Start()
     {
         Init();
@@ -35,11 +37,10 @@ public class FindingGameController : BaseGameController<GameData>
 
         if (hit.collider != null)
         {
-            Debug.Log("Touch detected on: " + hit.collider.name);
-
-            if (hit.collider.TryGetComponent<IInteractable>(out var interactable))
+            if (hit.collider.TryGetComponent<IPressable>(out var interactable))
             {
-                interactable.Interact();
+                _currentInteractable = interactable;
+                _currentInteractable.Press();
             }
         }
     }

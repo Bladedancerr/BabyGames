@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: VocabularyLibrary
   m_EditorClassIdentifier: Assembly-CSharp::GameLibrary
   MainType: 0
-  BaseGameController: {fileID: 1150179978287405986, guid: fbd39db2804333642a9410843a23bbeb, type: 3}
   GameInternalLibraries:
   - {fileID: 11400000, guid: a56b36edaa876e24f9515a5a6b7c9965, type: 2}
+  - {fileID: 11400000, guid: 5acf293c5af974741a30cd8564c163a9, type: 2}

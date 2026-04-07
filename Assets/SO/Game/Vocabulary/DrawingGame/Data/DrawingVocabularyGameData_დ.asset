@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0a19b531defd33a418d6ba18f69adb00, type: 3}
-  m_Name: DrawingVocabularyGameData_2
+  m_Name: "DrawingVocabularyGameData_\u10D3"
   m_EditorClassIdentifier: Assembly-CSharp::DrawingVocabularyGameData
   GameType: 0
   InternalGameType: 0
-  ID: 2
-  GamePrefab: {fileID: 9080118235703015381, guid: 4f86f4e06ff5a9749b2021fda2973faf, type: 3}
-  OnMapButtonIcon: {fileID: 0}
+  ID: 3
+  GamePrefab: {fileID: 9080118235703015381, guid: c1c623aaa3f0d0a44a7908f29d68323f, type: 3}
+  CharacterData: {fileID: 11400000, guid: e0821d7fdb57b234ab1e95b060131d2e, type: 2}
   PathData: {fileID: 11400000, guid: e665ee2f5ac46714aa380ebf003a3e9b, type: 2}

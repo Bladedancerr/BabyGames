@@ -7,5 +7,4 @@ public abstract class GameData : ScriptableObject
     public GameTypeInternal InternalGameType;
     public int ID;
     public GameObject GamePrefab;
-    public Sprite OnMapButtonIcon;
 }

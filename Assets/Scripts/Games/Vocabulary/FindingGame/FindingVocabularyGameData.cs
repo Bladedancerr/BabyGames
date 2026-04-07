@@ -5,5 +5,4 @@ using UnityEngine;
 public class FindingVocabularyGameData : VocabularyGameData
 {
     public List<CharacterData> CorrectCharacterDatas;
-    public List<CharacterData> IncorrectCharacterDatas;
 }

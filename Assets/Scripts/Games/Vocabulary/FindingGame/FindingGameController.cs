@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class FindingGameController : BaseGameController<GameData>
+public class FindingGameController : BaseGameController<FindingVocabularyGameData>
 {
     private IPointerInputProvider _inputProvider;
 
@@ -27,7 +27,6 @@ public class FindingGameController : BaseGameController<GameData>
     public override void Init()
     {
         _inputProvider = new MouseInputProvider(Camera.main);
-
         _inputProvider.OnPointerDown += HandlePointerDown;
     }
 
@@ -51,5 +50,30 @@ public class FindingGameController : BaseGameController<GameData>
 
     public override void StartGame()
     {
+    }
+
+    private void OnEnable()
+    {
+        FindingGameInteractable.OnCharacterPressed += OnCharacterPressed;
+    }
+
+    private void OnDisable()
+    {
+        _inputProvider.OnPointerDown -= HandlePointerDown;
+        FindingGameInteractable.OnCharacterPressed -= OnCharacterPressed;
+
+    }
+
+    private void OnCharacterPressed(CharacterData data)
+    {
+        Debug.Log($"controller received character press: {data.CharacterName}");
+        if (_gameData.CorrectCharacterDatas.Contains(data))
+        {
+            Debug.Log("controller received correct character press");
+        }
+        else
+        {
+            Debug.Log("controller received incorrect character press");
+        }
     }
 }

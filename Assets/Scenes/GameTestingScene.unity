@@ -550,6 +550,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FindingGameController
   GameType: 0
   InternalGameType: 0
+  _gameData: {fileID: 11400000, guid: d5c1cf5085cc3214092d08fc492d26bd, type: 2}
   _interactableLayer:
     serializedVersion: 2
     m_Bits: 8

@@ -16,6 +16,5 @@ MonoBehaviour:
   InternalGameType: 1
   ID: 4
   GamePrefab: {fileID: 0}
-  CharacterData: {fileID: 0}
+  CharacterData: {fileID: 11400000, guid: 77d64d041f0f270438892993a2de99fb, type: 2}
   CorrectCharacterDatas: []
-  IncorrectCharacterDatas: []

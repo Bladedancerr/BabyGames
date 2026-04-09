@@ -19,10 +19,11 @@ public class MouseInputProvider : IPointerInputProvider
     public void Tick()
     {
         bool isActive = Input.GetMouseButton(0);
-        Vector2 currentMousePos = _mainCamera.ScreenToWorldPoint(Input.mousePosition);
 
         if (isActive)
         {
+            Vector2 currentMousePos = _mainCamera.ScreenToWorldPoint(Input.mousePosition);
+
             if (!_wasActive)
             {
                 OnPointerDown?.Invoke(currentMousePos);

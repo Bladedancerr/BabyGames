@@ -1,36 +1,38 @@
-using System;
 using UnityEngine;
 
 public class FindingGameController : BaseGameController<FindingVocabularyGameData>
 {
-    private IPointerInputProvider _inputProvider;
-
     [SerializeField]
     private LayerMask _interactableLayer;
 
-    private IPressable _currentInteractable;
+    // needs to be removed, orchestrator will initialize
+    // private void Start()
+    // {
+    //     Init();
+    // }
 
-    private void Start()
+    public override void Init()
     {
-        Init();
+        base.Init();
+        FindingGameInteractable.OnCharacterPressed += OnCharacterPressed;
     }
 
-    private void Update()
+    public override void StartGame()
     {
-        _inputProvider.Tick();
     }
 
     public override void FinishGame()
     {
+        base.FinishGame();
     }
 
-    public override void Init()
+    public override void ResetGame()
     {
-        _inputProvider = new MouseInputProvider(Camera.main);
-        _inputProvider.OnPointerDown += HandlePointerDown;
+        base.ResetGame();
+        FindingGameInteractable.OnCharacterPressed -= OnCharacterPressed;
     }
 
-    private void HandlePointerDown(Vector2 touchWorldPos)
+    public override void HandlePointerDown(Vector2 touchWorldPos)
     {
         RaycastHit2D hit = Physics2D.Raycast(touchWorldPos, Vector2.zero, 0f, _interactableLayer);
 
@@ -38,30 +40,9 @@ public class FindingGameController : BaseGameController<FindingVocabularyGameDat
         {
             if (hit.collider.TryGetComponent<IPressable>(out var interactable))
             {
-                _currentInteractable = interactable;
-                _currentInteractable.Press();
+                interactable.Press();
             }
         }
-    }
-
-    public override void ResetGame()
-    {
-    }
-
-    public override void StartGame()
-    {
-    }
-
-    private void OnEnable()
-    {
-        FindingGameInteractable.OnCharacterPressed += OnCharacterPressed;
-    }
-
-    private void OnDisable()
-    {
-        _inputProvider.OnPointerDown -= HandlePointerDown;
-        FindingGameInteractable.OnCharacterPressed -= OnCharacterPressed;
-
     }
 
     private void OnCharacterPressed(CharacterData data)
@@ -70,6 +51,7 @@ public class FindingGameController : BaseGameController<FindingVocabularyGameDat
         if (_gameData.CorrectCharacterDatas.Contains(data))
         {
             Debug.Log("controller received correct character press");
+            FinishGame();
         }
         else
         {

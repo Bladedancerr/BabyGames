@@ -32,6 +32,7 @@ public class TouchInputProvider : IPointerInputProvider
             {
                 OnPointerMove?.Invoke(touchPos);
             }
+
             _lastTouchPos = touchPos;
         }
         else if (_wasActive)

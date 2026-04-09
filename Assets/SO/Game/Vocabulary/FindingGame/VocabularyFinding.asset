@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dab78ad64bca48b4aaf593622abdd7c0, type: 3}
-  m_Name: FindingVocabulary
+  m_Name: VocabularyFinding
   m_EditorClassIdentifier: Assembly-CSharp::GameInternalLibrary
   GameTypeInternal: 1
-  BaseGameController: {fileID: 1150179978287405986, guid: fbd39db2804333642a9410843a23bbeb, type: 3}
+  BaseGameController: {fileID: 4256713348188779132, guid: 6da587f883c8a924da8292110c7b6548, type: 3}
   GameDatas:
   - {fileID: 11400000, guid: d5c1cf5085cc3214092d08fc492d26bd, type: 2}
   - {fileID: 11400000, guid: 78fb7f93dadf11e428427a70d6c0a4ea, type: 2}

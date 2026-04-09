@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dab78ad64bca48b4aaf593622abdd7c0, type: 3}
+  m_Name: VocabularyFindingAll
+  m_EditorClassIdentifier: Assembly-CSharp::GameInternalLibrary
+  GameTypeInternal: 2
+  BaseGameController: {fileID: 870785689966202505, guid: 9281003b7df34044ca9d1443d74c3c82, type: 3}
+  GameDatas:
+  - {fileID: 11400000, guid: 01e8313bbab99f7438ed35cf3bd7d6fa, type: 2}
+  - {fileID: 11400000, guid: df7c0dbcee97e154b88f70558f6a7a74, type: 2}
+  - {fileID: 11400000, guid: a1fac6d3ec3553b45adfa53020ab8091, type: 2}
+  - {fileID: 11400000, guid: dfa856d1249ab0d48adc6ea4669681fc, type: 2}
+  - {fileID: 11400000, guid: 1c4cd6fbf6ab16345832994a414fe240, type: 2}

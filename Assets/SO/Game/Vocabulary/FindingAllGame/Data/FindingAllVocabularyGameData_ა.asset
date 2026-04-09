@@ -9,13 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b432309a40ab1242b85dbb675952407, type: 3}
-  m_Name: "FindingVocabularyGameData_\u10D0"
-  m_EditorClassIdentifier: Assembly-CSharp::FindingVocabularyGameData
-  GameType: 0
-  InternalGameType: 1
-  ID: 0
-  GamePrefab: {fileID: 8315573138892975915, guid: a8bd88638208d484b86b5c618785d61b, type: 3}
+  m_Script: {fileID: 11500000, guid: 16b6446b833261247b7ee20168588667, type: 3}
+  m_Name: "FindingAllVocabularyGameData_\u10D0"
+  m_EditorClassIdentifier: Assembly-CSharp::FindingAllVocabularyGameData
+  GamePrefab: {fileID: 7419605860020421423, guid: 8d178ac1ae4d70446a195e3f7379f770, type: 3}
   CharacterData: {fileID: 11400000, guid: b6c89ab1959306f41a8ba110dad88590, type: 2}
   CorrectCharacterDatas:
   - {fileID: 11400000, guid: b6c89ab1959306f41a8ba110dad88590, type: 2}
+  TotalCount: 3

@@ -553,6 +553,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Core
       objectReference: {fileID: 0}
+    - target: {fileID: 6890834803577707671, guid: 420204bf1d20fb546be992e1ffce7988, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8148073674301039850, guid: 420204bf1d20fb546be992e1ffce7988, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

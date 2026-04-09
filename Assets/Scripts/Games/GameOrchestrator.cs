@@ -31,6 +31,11 @@ public class GameOrchestrator : Singleton<GameOrchestrator>, IGameOrchestrator
         SetupLookups();
     }
 
+    protected void Start()
+    {
+        // StartGame(_gameType, _gameTypeInternal, _gameIndex);
+    }
+
     //for testing
     private void Update()
     {
@@ -58,6 +63,8 @@ public class GameOrchestrator : Singleton<GameOrchestrator>, IGameOrchestrator
         {
             _gameController.StartGame();
         }
+
+        _gameController.OnGameFinished += OnGameFinishedCallback;
     }
 
     public void ResetGame()
@@ -65,6 +72,7 @@ public class GameOrchestrator : Singleton<GameOrchestrator>, IGameOrchestrator
         if (_gameController != null)
         {
             _gameController.ResetGame();
+            _gameController.OnGameFinished -= OnGameFinishedCallback;
             Destroy(_gameController.gameObject);
         }
 
@@ -149,5 +157,10 @@ public class GameOrchestrator : Singleton<GameOrchestrator>, IGameOrchestrator
     private string GetKey(string merger, params object[] args)
     {
         return string.Join(merger, args);
+    }
+
+    private void OnGameFinishedCallback()
+    {
+        Debug.Log($"orchestrator: gamefinished callback");
     }
 }

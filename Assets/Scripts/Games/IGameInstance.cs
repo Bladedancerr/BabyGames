@@ -1,3 +1,5 @@
+using System;
+
 public interface IGameInstance
 {
     public bool TryInit(GameData data);

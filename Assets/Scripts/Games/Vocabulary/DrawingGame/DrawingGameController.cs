@@ -17,22 +17,37 @@ public class DrawingGameController : BaseGameController<DrawingVocabularyGameDat
     [SerializeField]
     private List<Vector2> _smoothedPoints;
     private ILineDrawer _lineDrawer;
-    private IPointerInputProvider _inputProvider;
     private IPathGenerator<Vector2> _pathGenerator;
 
     private float _distanceCheckerSqr;
     private float _resetDistanceCheckerSqr;
 
-    private GameObject _spawnedGame;
-
-    private void Update()
+    public override void Init()
     {
-        if (_inputProvider == null)
-        {
-            return;
-        }
+        base.Init();
 
-        _inputProvider.Tick();
+        _lineDrawer = new LineRendererDrawer(GetComponent<LineRenderer>());
+
+        _pathGenerator = new CatmullRomPathGenerator(_maxDistanceBetweenPoints);
+
+        _distanceCheckerSqr = _distanceChecker * _distanceChecker;
+        _resetDistanceCheckerSqr = _resetDistanceChecker * _resetDistanceChecker;
+
+        _smoothedPoints = _pathGenerator.GeneratePath(_gameData.PathData.Waypoints);
+    }
+
+    public override void StartGame()
+    {
+    }
+
+    public override void FinishGame()
+    {
+        base.FinishGame();
+    }
+
+    public override void ResetGame()
+    {
+        base.ResetGame();
     }
 
     private void CheckProgress(Vector2 pos)
@@ -61,16 +76,26 @@ public class DrawingGameController : BaseGameController<DrawingVocabularyGameDat
         }
     }
 
+    private void Progress(Vector2 pos)
+    {
+        _lineDrawer.AddPointToLine(pos);
+        _pointIndex++;
+        if (_pointIndex >= _smoothedPoints.Count)
+        {
+            FinishGame();
+        }
+    }
+
     private void ResetProgress()
     {
         _pointIndex = 0;
         _lineDrawer.ResetLine();
     }
 
-    private void Progress(Vector2 pos)
+    public override void HandlePointerMove(Vector2 position)
     {
-        _lineDrawer.AddPointToLine(pos);
-        _pointIndex++;
+        CheckProgress(position);
+        _touchPos = position;
     }
 
     private void OnDrawGizmos()
@@ -102,60 +127,6 @@ public class DrawingGameController : BaseGameController<DrawingVocabularyGameDat
         foreach (var point in _smoothedPoints)
         {
             Gizmos.DrawWireSphere(point, 0.1f);
-        }
-    }
-
-    public override void Init()
-    {
-        _lineDrawer = new LineRendererDrawer(GetComponent<LineRenderer>());
-
-#if UNITY_EDITOR
-        _inputProvider = new MouseInputProvider(Camera.main);
-#else
-        _inputProvider = new TouchInputProvider(Camera.main);
-#endif
-
-        _inputProvider.OnPointerMove += HandlePointerMove;
-
-        _pathGenerator = new CatmullRomPathGenerator(_maxDistanceBetweenPoints);
-
-        _distanceCheckerSqr = _distanceChecker * _distanceChecker;
-        _resetDistanceCheckerSqr = _resetDistanceChecker * _resetDistanceChecker;
-
-        _smoothedPoints = _pathGenerator.GeneratePath(_gameData.PathData.Waypoints);
-
-        _spawnedGame = Instantiate(_gameData.GamePrefab);
-    }
-
-    public override void StartGame()
-    {
-        Debug.Log($"{this.GetType()} game started");
-    }
-
-    public override void FinishGame()
-    {
-    }
-
-    public override void ResetGame()
-    {
-        if (_spawnedGame != null)
-        {
-            Destroy(_spawnedGame);
-        }
-        _spawnedGame = null;
-    }
-
-    private void HandlePointerMove(Vector2 position)
-    {
-        CheckProgress(position);
-        _touchPos = position;
-    }
-
-    private void OnDestroy()
-    {
-        if (_inputProvider != null)
-        {
-            _inputProvider.OnPointerMove -= HandlePointerMove;
         }
     }
 }
